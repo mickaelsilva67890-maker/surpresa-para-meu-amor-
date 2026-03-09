@@ -14,7 +14,6 @@ font-family:Arial, sans-serif;
 background:#000;
 color:white;
 text-align:center;
-overflow-x:hidden;
 }
 
 /* capa */
@@ -36,9 +35,9 @@ color:#ff4d6d;
 /* botão */
 
 button{
-padding:12px 25px;
+padding:14px 28px;
 border:none;
-border-radius:25px;
+border-radius:30px;
 background:#ff4d6d;
 color:white;
 font-size:18px;
@@ -51,31 +50,17 @@ cursor:pointer;
 display:none;
 max-width:700px;
 margin:auto;
-padding:20px;
+padding:30px;
 font-size:20px;
-line-height:1.6;
+line-height:1.7;
 }
 
 /* contador */
 
 #contador{
-font-size:24px;
+font-size:26px;
 margin:40px 0;
 color:#ff4d6d;
-}
-
-/* galeria */
-
-.galeria{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-padding:20px;
-}
-
-.galeria img{
-width:100%;
-border-radius:10px;
 }
 
 /* corações */
@@ -105,7 +90,6 @@ opacity:0;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -114,29 +98,35 @@ opacity:0;
 
 <h1>Para o Meu Amor ❤️</h1>
 
-<p>Uma pequena surpresa feita só para você</p>
+<p>Eu fiz algo especial para você</p>
 
-<button onclick="abrirCarta()">Toque para abrir a carta</button>
+<button onclick="abrirCarta()">Abrir minha carta 💌</button>
 
 </section>
 
 <section id="carta">
 
-<h2>Minha Carta Para Você 💌</h2>
+<h2>Minha Carta Para Você</h2>
 
 <p>
 
 Desde que você entrou na minha vida,
-os meus dias ficaram diferentes.
+meus dias ficaram mais leves.
 
-Seu sorriso, seu jeito,
-as pequenas coisas que você faz…
+Seu sorriso tem algo especial,
+algo que sempre consegue mudar
+o meu humor e trazer paz.
 
-tudo isso ficou guardado
-em um lugar especial dentro de mim.
+Talvez você nem imagine,
+mas muitas vezes eu me pego
+pensando em você.
 
-Essa página é só uma pequena forma
-de mostrar o quanto você é importante.
+Nas conversas,
+nos momentos,
+no seu jeito.
+
+Essa página é apenas uma pequena forma
+de mostrar o quanto você é importante para mim.
 
 </p>
 
@@ -146,23 +136,10 @@ de mostrar o quanto você é importante.
 
 <div id="contador"></div>
 
-<h2>Nossos Momentos 📸</h2>
-
-<div class="galeria">
-
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-
-</div>
-
 <button onclick="tocarMusica()">Tocar nossa música 🎵</button>
 
-<audio id="musica" loop>
-
+<audio id="musica">
 <source src="musica.mp3" type="audio/mpeg">
-
 </audio>
 
 <script>
@@ -186,18 +163,12 @@ const agora = new Date()
 const diff = agora - dataInicio
 
 const dias = Math.floor(diff / (1000*60*60*24))
-
-const horas = Math.floor(diff / (1000*60*60))
-
-const minutos = Math.floor(diff / (1000*60))
-
-const segundos = Math.floor(diff / 1000)
+const horas = Math.floor(diff / (1000*60*60)) % 24
+const minutos = Math.floor(diff / (1000*60)) % 60
+const segundos = Math.floor(diff / 1000) % 60
 
 document.getElementById("contador").innerHTML =
-dias + " dias ❤️ " +
-horas + " horas ❤️ " +
-minutos + " minutos ❤️ " +
-segundos + " segundos"
+dias+" dias "+horas+" horas "+minutos+" minutos "+segundos+" segundos ❤️"
 
 }
 
@@ -215,7 +186,7 @@ document.getElementById("musica").play()
 
 function criarCoracao(){
 
-const c = document.createElement("div")
+const c=document.createElement("div")
 
 c.className="coracao"
 
@@ -228,9 +199,7 @@ c.style.fontSize=(10+Math.random()*30)+"px"
 document.body.appendChild(c)
 
 setTimeout(()=>{
-
 c.remove()
-
 },6000)
 
 }
